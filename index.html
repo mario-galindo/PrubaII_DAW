@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Galindo Chat</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body ng-app="Chat" class="Estilo-Letra">
+
+	
+	
+	<div class="container" ng-controller="MainController" ng-init="listarChats()">
+
+		<nav class="navbar navbar-inverse" style="background-color:#337ab7;">
+			<div class="container-fluid">
+				<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand">Galindo Chat - Prueba II - Desarrollo de App web 2016</a>
+				</div>
+
+			
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<!--<li><a href="" ng-click="open()">Identificarse</a></li>-->
+					
+				</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="col-md-6">
+			<input type="text" class="form-control" placeholder="Ingrese Nombre de Usuario" ng-model="usuario">
+			<button class="btn btn-danger" ng-click="limpiarSala()" style="margin-top:5px;">Limpiar Sala</button>
+		</div>
+
+			<div class="container" style="margin-top:3px;">
+				<div class="row">
+					<div class="col-md-5">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<span class="glyphicon glyphicon-comment"></span> Chat
+							</div>
+							<div class="panel-body" style="max-height:400px;overflow:auto;">
+								<ul class="chat">
+									<li class="left clearfix" ng-repeat="(key,value) in chatList"><span class="chat-img pull-left">
+										<img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
+									</span>
+										<div class="chat-body clearfix">
+											<div class="header">
+												<strong class="primary-font">{{value.nick}}</strong> <small class="pull-right text-muted">
+													<span class="glyphicon glyphicon-time"></span>{{value.hora}}</small>
+											</div>
+											<p>
+												{{value.message}}
+											</p>
+										</div>
+									</li>
+									
+								</ul>
+							</div>
+							<div class="panel-footer">
+								<div class="input-group">
+									<input id="btn-input" type="text" class="form-control input-sm" placeholder="Escriba su mensaje aqui..." ng-model="mensaje"/>
+									<span class="input-group-btn">
+										<button class="btn btn-success btn-sm" id="btn-chat" ng-click="nuevoChat()">
+											Enviar</button>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
+
+<!--Includes-->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<!--Google Fonts-->
+<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+
+
+
+<script src="app.js"></script>
+<!--Controllers-->
+<script src="controllers/MainController.js"></script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>
+
+
+
+
+<!--Firebase-->
+<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDm7Omwv1csO06l1HYbwNuW6S2zoxuogG8",
+    authDomain: "galindochat.firebaseapp.com",
+    databaseURL: "https://galindochat.firebaseio.com",
+    storageBucket: "galindochat.appspot.com",
+    messagingSenderId: "742244393383"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
